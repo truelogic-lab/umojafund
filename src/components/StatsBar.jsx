@@ -1,29 +1,31 @@
 import React from 'react';
-import { Users, CalendarDays, Landmark, Heart } from 'lucide-react';
+import { Users, ShieldCheck, Clock, Layers } from 'lucide-react';
 
 const StatsBar = () => {
-  const stats = [
-    { icon: <Users className="w-6 h-6 text-[#dc2626]" />, value: '100,000+', label: 'Active Members' },
-    { icon: <CalendarDays className="w-6 h-6 text-[#dc2626]" />, value: 'KSh 2', label: 'Daily Contribution' },
-    { icon: <Landmark className="w-6 h-6 text-[#dc2626]" />, value: 'KSh 6M', label: 'Monthly Pool (approx.)' },
-    { icon: <Heart className="w-6 h-6 text-[#dc2626]" />, value: '100%', label: 'Community Driven' },
+  const items = [
+    { icon: Users, label: 'Member-owned fund', desc: 'No external shareholders' },
+    { icon: ShieldCheck, label: 'Double-entry ledger', desc: 'Every entry balanced' },
+    { icon: Clock, label: '30-day cycles', desc: 'Predictable payout windows' },
+    { icon: Layers, label: 'Published rules', desc: 'Versioned per cycle' },
   ];
-
   return (
-    <section className="w-full bg-[#fef2f2] pb-16 font-sans">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-[#fee2e2] rounded-2xl p-6 lg:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 shadow-sm">
-          {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm">
-                {stat.icon}
+    <section className="bg-white border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {items.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.label} className="flex items-start gap-3">
+                <div className="shrink-0 w-10 h-10 rounded-xl bg-red-50 text-[#dc2626] flex items-center justify-center">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">{item.label}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-sm sm:text-lg font-extrabold text-gray-900 leading-tight">{stat.value}</span>
-                <span className="text-[10px] sm:text-xs text-gray-600 font-medium mt-1">{stat.label}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

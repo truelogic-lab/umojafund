@@ -22,3 +22,7 @@ Thumbs.db
 node_modules/.vite/
 local_settings.py
 media/
+.vercel/
+.vercel
+.vercel
+.vercel/
